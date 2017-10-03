@@ -282,6 +282,10 @@ button::-moz-focus-inner {
     display: inline-block;
   }
 
+  .body-region {
+    display: none;
+  }
+
   /* Chart */
   .chart-row {
     margin: auto;
@@ -325,7 +329,14 @@ button::-moz-focus-inner {
 
   .robot-info {
     padding: 0 .25rem;
-    width: 18.75rem;
+    width: 18.75rem;   
+  }
+
+  .robot-info-inner.active {
+    background-color: #fff;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNSIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDM1IDM1Ij48cmVjdCB3aWR0aD0iMzUiIGhlaWdodD0iMzUiIGZpbGw9IiM2NGE3MGIiLz48cG9seWxpbmUgcG9pbnRzPSI1LjI1IDE4LjM0NSAxMi44NTMgMjUuOTQ4IDI5Ljc1IDkuMDUyIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNCIgLz48L3N2Zz4K);
+    background-repeat: no-repeat;
+    border: 1px solid #64a70b; 
   }
 
   .robot-img-wrap {
@@ -440,6 +451,11 @@ button::-moz-focus-inner {
     content: '-';
     font-weight: 700;
   }
+
+  .compare-footer {
+    margin-top: 10px;
+    text-align: center;
+  }
 }
 /* END All Viewports*/
 
@@ -486,6 +502,10 @@ button::-moz-focus-inner {
       background-position: center;
       background-repeat: no-repeat;
     }
+
+    .collapse-btn {
+      display: none;
+    }    
   }
 }
 /* END Desktop */
@@ -577,6 +597,11 @@ button::-moz-focus-inner {
       background-repeat: no-repeat;
       display: block;
       height: 39px;
+    }
+
+    .collapse-btn {
+      display: block;
+      margin: 0 auto;
     }
   }
 }

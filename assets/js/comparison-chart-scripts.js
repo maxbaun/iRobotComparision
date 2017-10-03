@@ -12,19 +12,37 @@ $(function() {
     $('.comparison-chart').addClass('show-compare-hint');
   });
 
+  $('.comparison-chart .robot-info-inner').on('click', function (e) {
+    var index = $(this).attr('data-option-index');
+    $('.comparison-chart .option-checkbox[data-option-index="' + index+ '"').trigger('click');
+    $('.comparison-chart .compare-btn').trigger('click');
+  });
+
   // Apply classes to section root to only show selected robots
   $('.comparison-chart .compare-btn').click(function (e) {
     var $chartTable = $('.comparison-chart table').removeAttr('class');
-    var optionCount = $('.comparison-chart .compare-options').attr('data-option-count')
+    var optionCount = $('.comparison-chart .compare-options').attr('data-option-count');
+    var selected = 0;
+    $('.comparison-chart .robot-info-inner').removeClass('active');
     $('.comparison-chart .option-checkbox:checked').each(function () {
+      $('.comparison-chart .robot-info-inner[data-option-index="' + this.getAttribute('data-option-index') + '"').addClass('active');
       $chartTable.addClass('col-' + (optionCount - this.getAttribute('data-option-index')));
+      selected++;
     });
     $('.comparison-chart').addClass('comparison-active');
 
     // Show all of the rows in the table
     toggleRows();
 
-    $('html, body').animate({ scrollTop: $('.comparison-chart .body-region').offset().top - 15 }, 500);
+    
+    if (selected > 0) {
+      $('.comparison-chart .body-region').show();
+      $('html, body').animate({ scrollTop: $('.comparison-chart .body-region').offset().top - 15 }, 500);      
+    } else {
+      $('html, body').animate({ scrollTop: $('.page-anchor[id="Compare-Robots"]').offset().top}, 500, 'swing', function () {
+        $('.comparison-chart .body-region').hide();
+      });      
+    }
   });
 
   // Reset the chart (remove selected robot classes from section root)
@@ -91,7 +109,6 @@ $(function() {
   });
 
   $(window).on('resize', function () {
-    toggleCollapseButton();
     toggleRows();
   });
 
@@ -165,9 +182,5 @@ $(function() {
     return $('.comparison-chart .collapse-btn').attr('data-active') === 'false';
   }
 
-  function toggleCollapseButton () {
-    return isMobile() ? $('.comparison-chart .collapse-btn').show() : $('.comparison-chart .collapse-btn').hide();
-  }
-
-  toggleCollapseButton();
+  toggleRows();
 });

@@ -1,3 +1,6 @@
+/* === UTILITIES === */
+/* END Utilities */
+/* === GLOBAL STYLES - Don't Edit */
 html {
   font-size: 16px;
 }
@@ -136,6 +139,14 @@ button::-moz-focus-inner {
 .lg-btn {
   padding: 10px 20px;
 }
+/* END Global Styles */
+/* ==== COMPARISON CHART STYLES ==== */
+/* --- ALL VIEWPORTS --- */
+.comparison-chart {
+  /* Header Layout and Text */
+  /* Robot Selector */
+  /* Chart */
+}
 .comparison-chart .header-region {
   background: #f7f7f7;
   padding: 4rem 1.25rem 1px;
@@ -234,6 +245,9 @@ button::-moz-focus-inner {
 .comparison-chart.comparison-active .reset-btn {
   display: inline-block;
 }
+.comparison-chart .body-region {
+  display: none;
+}
 .comparison-chart .chart-row {
   margin: auto;
   max-width: 1300px;
@@ -303,6 +317,12 @@ button::-moz-focus-inner {
 .comparison-chart .robot-info {
   padding: 0 .25rem;
   width: 18.75rem;
+}
+.comparison-chart .robot-info-inner.active {
+  background-color: #fff;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNSIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDM1IDM1Ij48cmVjdCB3aWR0aD0iMzUiIGhlaWdodD0iMzUiIGZpbGw9IiM2NGE3MGIiLz48cG9seWxpbmUgcG9pbnRzPSI1LjI1IDE4LjM0NSAxMi44NTMgMjUuOTQ4IDI5Ljc1IDkuMDUyIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNCIgLz48L3N2Zz4K);
+  background-repeat: no-repeat;
+  border: 1px solid #64a70b;
 }
 .comparison-chart .robot-img-wrap {
   padding-bottom: 5px;
@@ -407,7 +427,17 @@ button::-moz-focus-inner {
   content: '-';
   font-weight: 700;
 }
+.comparison-chart .compare-footer {
+  margin-top: 10px;
+  text-align: center;
+}
+/* END All Viewports*/
+/* --- DESKTOP --- */
 @media (min-width: 768px) {
+  .comparison-chart {
+    /* Robot Selector */
+    /* Chart */
+  }
   .comparison-chart .compare-options {
     list-style: none;
     margin: 0 0 .5rem;
@@ -440,8 +470,17 @@ button::-moz-focus-inner {
     background-position: center;
     background-repeat: no-repeat;
   }
+  .comparison-chart .collapse-btn {
+    display: none;
+  }
 }
+/* END Desktop */
+/* --- MOBILE --- */
 @media (max-width: 767px) {
+  .comparison-chart {
+    /* Robot Selector*/
+    /* Chart */
+  }
   .comparison-chart .compare-options {
     display: -webkit-flex;
     display: flex;
@@ -513,4 +552,9 @@ button::-moz-focus-inner {
     display: block;
     height: 39px;
   }
+  .comparison-chart .collapse-btn {
+    display: block;
+    margin: 0 auto;
+  }
 }
+/* END Mobile */
