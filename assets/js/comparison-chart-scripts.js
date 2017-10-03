@@ -24,12 +24,38 @@ $(function() {
     // Show all of the rows in the table
     $('.comparison-chart table tbody tr').show();
 
+    $('html, body').animate({ scrollTop: $('.comparison-chart .body-region').offset().top - 15 }, 500);
+  });
+
+  // Reset the chart (remove selected robot classes from section root)
+  $('.comparison-chart .reset-btn').click(function (e) {
+    $('.comparison-chart .option-checkbox').prop('checked', false).attr('disabled', false);
+    $('.comparison-chart .compare-btn').attr('disabled', true);
+    $('.comparison-chart').removeClass('comparison-active show-compare-hint');
+    $('.comparison-chart table').removeAttr('class');
+    // Show all of the rows in the table
+    $('.comparison-chart table tbody tr').show();
+    $('html, body').animate({ scrollTop: $('.page-anchor[id="Compare-Robots"]').offset().top }, 500);
+  });
+
+  // Show only differences in the chart
+  $('.comparison-chart .diff-btn').click(function () {
+    var active = $('.comparison-chart .diff-btn').attr('data-active');
+    console.log('active', active)
+    $('.comparison-chart .diff-btn').attr('data-active', active === 'true' ? 'false' : 'true');
+    $('.comparison-chart .diff-btn').text(active === 'true' ? 'Show Only Differences' : 'Show All Features');
+    // Show all of the rows in the table
+    $('.comparison-chart table tbody tr').show();
+    
+    if (active === 'true') {
+      return;
+    }
+
     // Loop through all of the rows in the table to find which rows to hide
     $('.comparison-chart table tbody tr').each(function (index, row) {
       // Map the tds in the row to an array of objects for comparrable availability
       var tds = $(row).find('td:visible').map(function (index, td) {
         return {
-          index: index,
           html: $(td).html(),
           classname: $(td).attr('class')
         }
@@ -52,19 +78,6 @@ $(function() {
 
       return visible ? $(row).show() : $(row).hide();
     });
-
-    $('html, body').animate({ scrollTop: $('.comparison-chart .body-region').offset().top - 15 }, 500);
-  });
-
-  // Reset the chart (remove selected robot classes from section root)
-  $('.comparison-chart .reset-btn').click(function (e) {
-    $('.comparison-chart .option-checkbox').prop('checked', false).attr('disabled', false);
-    $('.comparison-chart .compare-btn').attr('disabled', true);
-    $('.comparison-chart').removeClass('comparison-active show-compare-hint');
-    $('.comparison-chart table').removeAttr('class');
-    // Show all of the rows in the table
-    $('.comparison-chart table tbody tr').show();
-    $('html, body').animate({ scrollTop: $('.page-anchor[id="Compare-Robots"]').offset().top }, 500);
   });
 
   // Show desktop tooltips
